@@ -1,14 +1,12 @@
 <?php
-require('class/init.php'); 
-	//$session = $init->getSession();
-    $redirect = $init->getRedirect();
- 	$users = Users::getInstance();
+require('./class/users.php'); 
+	//$redirect = $init->getRedirect();
+ 	$user = Users::getInstance();
  	
 	if(isset($_POST['login'])){
-	 $array=array('username'=>$_POST['username'],'password'=>$_POST['password']);
-	 $login=$users->login($array);
-	 //echo "<pre>"; print_r($login);die("hi");
- }
+    	$array=array('username'=>$_POST['username'],'password'=>$_POST['password']);
+        $login=$user->login($array);
+    }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

@@ -65,7 +65,7 @@ require('class/init.php');
             </tr>
             <tr>
                 <td><span></span></td>
-                <td><label>Already have an account? Log in!</label></td>
+                <td><a href="$this->"><label>Already have an account? Log in!</label></a></td>
             </tr>
          </table>
     </form>
