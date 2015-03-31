@@ -10,17 +10,12 @@ require('class/init.php');
 		if($_POST['password']==$_POST['confirm_password']){
 			
 			 $array=array('username'=>$_POST['username'],'password'=>$_POST['password']);
-			 //$login=$users->login($array);
-			 ?><script>
-            alert("password is match");
-			//window.location.open='home.php';
-            </script><?php
-			 //echo "<pre>"; print_r($login);die("hi");
-			}
+			 $login=$users->registration($array);
+			 }
 			else{
 			
 			?><script>
-            alert();
+            alert("there are some problem in signin	");
 			//window.location.open='register.php';
             </script><?php
 		}
@@ -31,6 +26,13 @@ require('class/init.php');
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Registration Form</title>
+<script language=Javascript> 
+function isCheckName(evt){  //alert(evt);
+
+
+
+}
+</script>	
 </head>
 <body>
 <div id="container" style="padding:50px;">
@@ -41,7 +43,7 @@ require('class/init.php');
         <table cellpadding="5" cellspacing="5" align="center">
             <tr>
                 <td>Desired:</td>
-                <td><input type="text" name="username" placeholder="UserName" /></td>
+                <td><input type="text" name="username" onchange="isCheckName(this.value);"  placeholder="UserName" /></td>
             </tr>
             <tr>
                 <td>Password:</td>
@@ -65,7 +67,7 @@ require('class/init.php');
             </tr>
             <tr>
                 <td><span></span></td>
-                <td><a href="$this->"><label>Already have an account? Log in!</label></a></td>
+                <td><a href="<?php $this->$redirect('index.php')?>"><label>Already have an account? Log in!</label></a></td>
             </tr>
          </table>
     </form>

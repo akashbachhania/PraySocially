@@ -11,6 +11,10 @@
 //Define base url of project
 //for local
 define('BASE_URL', 'http://localhost/PraySocially');
+require('connection.php');
+require('redirect.php');
+require('users.php');
+
 
 //for server
 //define('BASE_URL', 'http://www.disposalmanager.com/geetu/');

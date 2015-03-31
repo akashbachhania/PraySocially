@@ -1,5 +1,4 @@
 <?php
-require('init.php');
 class Users extends Init{
    protected $userName;
    protected $passWord;
@@ -57,6 +56,19 @@ class Users extends Init{
       else
          return false;
    }
+   
+   //Function for registration user
+   public function registration($array){
+	    $user=$this->_dbh->exec("insert into userlogin values('".$array['username']."','".md5($array['password'])."')");
+		
+	  if($user)
+        return true;
+      else
+         return false;
+	   
+	   
+	   
+	   }
 
 }
 
