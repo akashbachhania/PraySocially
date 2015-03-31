@@ -26,6 +26,7 @@ class Users extends Init{
       $this->id = $id;  
    }
 
+
    //Getters
    public function getUsername ($userName){
       return $this->userName;  
@@ -39,6 +40,7 @@ class Users extends Init{
       return $this->$id;  
    }
    
+
    //Functions
    public function getAllUsers(){
 
@@ -55,6 +57,20 @@ class Users extends Init{
       else
          return false;
    }
+   
+   //Function for registration user
+   public function registration($array){
+	    $user=$this->_dbh->exec("insert into userlogin values('".$array['username']."','".md5($array['password'])."')");
+		
+	  if($user)
+        return true;
+      else
+         return false;
+	   
+	   
+	   
+	   }
+
 }
 
 ?>

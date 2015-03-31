@@ -9,7 +9,6 @@ require('./class/users.php');
     //Starting Session
     $session->startSession();
 
-
     if(isset($_POST['login'])){
     	$array=array('username'=>$_POST['username'],'password'=>$_POST['password']);
         $login=$user->login($array);
