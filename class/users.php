@@ -59,7 +59,7 @@ class Users extends Init{
    
    //Function for registration user
    public function registration($array){
-	    $user=$this->_dbh->exec("insert into userlogin values('".$array['username']."','".md5($array['password'])."')");
+	    $user=$this->_dbh->exec("insert into userlogin(username,password) values('".$array['username']."','".md5($array['password'])."')");
 		
 	  if($user)
         return true;
@@ -69,6 +69,16 @@ class Users extends Init{
 	   
 	   
 	   }
+	   
+	   
+	   //Function Check register username do not exist in database 
+   public function registerCheck($array){
+      $user=$this->_dbh->query("select * from userlogin	 where username='".$array['username']."' ")->fetchAll(PDO::FETCH_ASSOC);
+      if($user)
+         return true;
+      else
+         return false;
+   }
 
 }
 

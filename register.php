@@ -26,14 +26,43 @@ require('class/init.php');
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Registration Form</title>
-<script language=Javascript> 
-function isCheckName(evt){  //alert(evt);
-
-
-
-}
-</script>	
-</head>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#greencheck1').hide();
+	$('#label1').hide();
+	
+			$('.username').blur(function (e) { //alert($(".username").val());
+				e.preventDefault();
+				var data = {};
+				data.username=$(".username").val();
+				$.ajax({
+					type: "POST",
+					url: "ajaxRegister.php",
+					data: data,
+					//cache: false,
+					success: function (response) {
+						//alert(response);
+						if(response==true){
+								$(".username").onfocus();
+								$('#greencheck1').hide();
+								$('#label1').show();
+							}
+						else{
+								$('#label1').hide();
+								$('#greencheck1').show();
+								
+						}
+					}
+			}); 
+					 return false;
+	   
+		});
+	
+});
+</script> </head>
 <body>
 <div id="container" style="padding:50px;">
     <div id="form1" style="padding:200px;" align="center">
@@ -43,7 +72,9 @@ function isCheckName(evt){  //alert(evt);
         <table cellpadding="5" cellspacing="5" align="center">
             <tr>
                 <td>Desired:</td>
-                <td><input type="text" name="username" onchange="isCheckName(this.value);"  placeholder="UserName" /></td>
+                <td><input type="text" name="username" class="username" placeholder="UserName" /></td>
+                <td><img src="image/greencheck1.jpg" height="20" width="20" id="greencheck1"/></td>
+                <td><label id="label1">Username is Exist! Please Entrer Another</label></td>
             </tr>
             <tr>
                 <td>Password:</td>
