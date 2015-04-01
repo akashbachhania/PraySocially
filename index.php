@@ -1,5 +1,5 @@
 <?php
-require('./class/users.php');
+require('./class/init.php');
 	//Creating object of user entity
     $user    = Users::getInstance();
     //Getting redirect object

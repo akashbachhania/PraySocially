@@ -1,5 +1,4 @@
 <?php
-require('init.php');
 class Users extends Init{
    protected $userName;
    protected $passWord;

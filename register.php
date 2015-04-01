@@ -1,24 +1,22 @@
 <?php
 require('class/init.php'); 
-	//$session = $init->getSession();
-    $redirect = $init->getRedirect();
- 	$users = Users::getInstance();
- 	
-	if(isset($_POST['register'])){
+//$session = $init->getSession();
+$redirect = $init->getRedirect();
+$users = Users::getInstance();
+
+if(isset($_POST['register'])){
 		
-		//if password and confirm password is match 
-		if($_POST['password']==$_POST['confirm_password']){
-			
-			 $array=array('username'=>$_POST['username'],'password'=>$_POST['password']);
-			 $login=$users->registration($array);
-			 }
-			else{
-			
-			?><script>
-            alert("there are some problem in signin	");
-			//window.location.open='register.php';
-            </script><?php
-		}
+	//if password and confirm password is match 
+	if($_POST['password']==$_POST['confirm_password']){
+		$array=array('username'=>$_POST['username'],'password'=>$_POST['password']);
+		$login=$users->registration($array);
+	}
+	else{
+		?><script>
+        alert("there are some problem in signin	");
+		//window.location.open='register.php';
+        </script><?php
+	}
  }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

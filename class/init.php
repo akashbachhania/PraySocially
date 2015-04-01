@@ -22,6 +22,8 @@ include_once("connection.php");
 include_once("redirect.php");
 //common class for session
 include_once("session.php");
+//Users class
+include_once("users.php");
 
 class Init {
     
