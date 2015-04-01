@@ -11,15 +11,19 @@
 //Define base url of project
 //for local
 define('BASE_URL', 'http://localhost/PraySocially');
-require('connection.php');
-require('redirect.php');
-require('users.php');
-
 
 //for server
-//define('BASE_URL', 'http://www.disposalmanager.com/geetu/');
+//define('BASE_URL', '');
 
 //connection file
+
+include_once("connection.php");
+//redirect class
+include_once("redirect.php");
+//common class for session
+include_once("session.php");
+//Users class
+include_once("users.php");
 
 class Init {
     
@@ -32,7 +36,7 @@ class Init {
         $dbObject = DatabaseConnection::getInstance();
         $this->_dbh = $dbObject->getConnection();
         $this->_redirect = URLRedirect::getInstance();
-
+        $this->_session = Session::getInstance();
     }
     
     //get object of current class...
@@ -42,12 +46,17 @@ class Init {
         }
         return self::$instance;
     }
-    
   
     //get redirect object
     public function getRedirect(){
         return $this->_redirect;
     }
 
+    //get session object
+    public function getSession(){
+        return $this->_session;
+    }
+
 }
 $init = Init::getInstance();
+

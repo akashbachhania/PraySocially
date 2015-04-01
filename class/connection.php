@@ -10,7 +10,7 @@ class DatabaseConnection {
     }
     
     public function getConnection(){
-       	$dbh = new PDO("mysql:host=localhost;dbname=praysocially", "root", "") or die(mysql_error());
+       	$dbh = new PDO("mysql:host=localhost;dbname=PraySocially", "root", "") or die(mysql_error());
         return $dbh;
     } 
 

@@ -1,13 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-</head>
+<?php
+require('./class/init.php');
+//Getting redirect object
+$session=$init->getSession();
+//Starting Session
+$session->startSession();
 
-<body>
-<h1>Hello ,
- You are successfully register !!!</h1>
+if($session->__get('username')){
+	echo "Hello ".$session->__get('username');
+	echo  "<br>";
+	echo "<a href='logout.php'>Logout</a>";
+}
+else{
+	echo "<a href='index.php'>Please Login</a>";	
+}
+?>
 
-</body>
-</html>
