@@ -45,8 +45,9 @@ $(document).ready(function() {
 					//cache: false,
 					success: function (response) {
 						//alert(response);
-						if(response==true){
-								$(".username").onfocus();
+						if(response=="true"){
+								$(".username").val("");
+								$(".username").focus();
 								$('#greencheck1').hide();
 								$('#label1').show();
 							}
@@ -60,6 +61,46 @@ $(document).ready(function() {
 					 return false;
 	   
 		});
+		
+		
+		
+		$("#register").click(function(){ 
+		 $("#registerfrm").validate({
+                        rules:
+            {
+                  "username":{
+                  required: true,     
+                  minlength:2,
+                  maxlength:40
+                  },  
+                  email:
+                  {
+                  required:true,
+                  },
+                  password :{
+                  required:true,
+                  passMatch:true
+                  },
+                  confirm_password:{
+                  equalTo: "#password"
+                  },
+                 
+            messages:
+            {
+                  username:{
+                        required: "Please provide a Company Name",
+                        minlength: "Your Company Name must be at least 2 characters long",
+                        maxlength: "Your Company Name must be at least less than or equal to 40"
+                  },
+                  password :{
+                  required:" Enter Password",
+                  pattern:"Incorrect pattern"
+                  },
+                  confirm_password :" Enter Confirm Password Same as Password",
+                  }
+            }
+		  });
+	});
 	
 });
 </script> </head>
@@ -68,7 +109,7 @@ $(document).ready(function() {
     <div id="form1" style="padding:200px;" align="center">
             <h1>Registration Form</h1>
     
-    <form method="post" action="">
+    <form method="post" id="registerfrm" action="">
         <table cellpadding="5" cellspacing="5" align="center">
             <tr>
                 <td>Desired:</td>
@@ -78,19 +119,19 @@ $(document).ready(function() {
             </tr>
             <tr>
                 <td>Password:</td>
-                <td><input type="password" name="password" placeholder="PassWord" /></td>
+                <td><input type="password" name="password" class="password" placeholder="PassWord" /></td>
             </tr>
              <tr>
                 <td>Confirm Password:</td>
-                <td><input type="password" name="confirm_password" placeholder="Confirm PassWord" /></td>
+                <td><input type="password" name="confirm_password" class="confirm_password" placeholder="Confirm PassWord" /></td>
             </tr>
              <tr>
                 <td>Email Address:</td>
-                <td><input type="email" name="email" placeholder="email" /></td>
+                <td><input type="email" name="email" class="email" placeholder="email" /></td>
             </tr>
             <tr>
                 <td><span></span></td>
-                <td><input type="submit" name="register" value="Register"/></td>
+                <td><input type="submit" name="register" id="register" value="Register"/></td>
             </tr>
             <tr>
                 <td><span></span></td>

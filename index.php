@@ -1,5 +1,5 @@
 <?php
-require('./class/users.php'); 
+require('./class/init.php'); 
 	//$redirect = $init->getRedirect();
  	$user = Users::getInstance();
  	
